@@ -9,17 +9,7 @@
 
 #include "Shader.h"
 
-#define RENDER_DEPTH 1
 
-#if RENDER_DEPTH
-
-
-
-#else
-
-
-
-#endif // RENDER_DEPTH
 
 DEFINE_LOG_CATEGORY(LogCustomMeshPass)
 
