@@ -128,60 +128,7 @@ void Render(FRDGBuilder& GraphBuilder, FSceneInterface* Scene, const FSceneView&
 
 		
 
-#if 0
-		
-		{
-			static uint8 flag = 0u;
-			static uint64 FrameNum = 0ull;
-			if (!flag)
-			{
-				FrameNum++;
 
-				flag = 1;
-				AddReadbackTexturePass(GraphBuilder, RDG_EVENT_NAME("ReadBackRenderTarget"), RDGRenderTarget,
-					[RDGRenderTarget, Size](FRHICommandListImmediate& RHICmdList)
-					{
-						
-						UE_LOG(LogCustomMeshPass, Log, TEXT("ReadBackRenderTarget ,Frame = %d , SizeXY = %s "), FrameNum,*Size.ToString());
-
-						FIntRect Rect(0, 0, Size.X, Size.Y);
-					
-						TArray<FLinearColor> OutData;
-						
-						RHICmdList.ReadSurfaceData(RDGRenderTarget->GetRHI(), Rect, OutData, FReadSurfaceDataFlags(RCM_MinMax));
-
-						
-						
-						for (int32 i = 0; i < Size.Y; ++i)
-						{
-							bool bFound = false;
-							for (int32 j = 0; j < Size.X; ++j)
-							{
-								FLinearColor x = OutData[i * Size.Y + j];
-
-								if (!x.IsAlmostBlack())
-								{
-									//UE_LOG(LogCustomMeshPass, Log, TEXT("CSM:  Value Rendered,Frame = %d "), FrameNum);
-
-									UE_LOG(LogCustomMeshPass, Log, TEXT("CSM: X = %d, Y = %d , Frame = %d, Value =  %s")
-										, j, i, FrameNum, *x.ToString());
-									bFound = true;
-									break;
-								}
-
-							}
-							if (bFound)
-								break;
-						}
-						
-					}
-				);
-
-			}
-			
-
-		}
-#endif
 
 
 
