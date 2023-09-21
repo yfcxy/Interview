@@ -226,7 +226,7 @@ struct FCustomMeshPassSceneRenderer
 		);
 	}
 
-	////must be callded after deferredSceneRenderer::Render UploadDynamicPrimitiveShaderDataForView 2791.h
+	
 	void Render_RenderThread(FRDGBuilder& GraphBuilder , const FSceneView& View)
 	{
 		UE_LOG(LogCustomMeshPass, Log, TEXT("CustomMeshPass Render scene ,scene = %d"),(void*)Scene);
